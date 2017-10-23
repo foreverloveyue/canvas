@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas></canvas>
+</body>
+</html>
+<script>
+      
+     var canvas=document.querySelector('canvas');
+     var context=canvas.getContext('2d');
+      // 依赖数据
+    var data = [12, 40, 22, 10, 14];
+    var startAngle = 0;
+       // 1.获取随机颜色
+    function getRandomColor() {
+      var r = Math.floor(Math.random() * 256);
+      var g = Math.floor(Math.random() * 256);
+      var b = Math.floor(Math.random() * 256);
+
+      return 'rgb(' + r + ',' + g + ',' + b + ')';
+    }
+    data.forEach(function (item) {
+        total = total + item;
+        context.beginPath();
+        context.moveTo(canvas.width / 2, canvas.height / 2);
+        context.arc(canvas.width / 2, canvas.height / 2, 150, startAngle, startAngle + item / total * 2 * Math.PI);
+        context.closePath();
+        context.fillStyle = getRandomColor();
+        context.fill();
+
+        startAngle = startAngle + item / total * 2 * Math.PI;
+      })
+</script>
